@@ -1,0 +1,5 @@
+{
+  "name": "PyTutor AI - Intelligent Adaptive Learning Platform",
+  "description": "A React-based prototype for an AI-powered Python learning platform featuring simulated RAG, AST analysis, and RL-based adaptive learning paths.",
+  "requestFramePermissions": []
+}
