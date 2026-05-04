@@ -1,0 +1,6 @@
+# Root ignores (project-wide)
+
+# Datasets (keep processed if you want; raw is typically large)
+data/raw/
+
+
