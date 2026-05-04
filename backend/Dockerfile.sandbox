@@ -1,0 +1,16 @@
+# Dockerfile for isolated sandbox execution
+FROM python:3.11-alpine
+
+WORKDIR /sandbox
+
+# Install minimal dependencies for code execution
+RUN pip install --no-cache-dir numpy pandas matplotlib
+
+# Create non-root user for security
+RUN addgroup -S sandbox && adduser -S sandbox -G sandbox
+
+# Switch to non-root user
+USER sandbox
+
+# Entrypoint will execute user code
+ENTRYPOINT ["python"]

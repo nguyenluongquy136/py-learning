@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pytutor-api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      # Optional
+      - QDRANT_URL=${QDRANT_URL}
+      - QDRANT_API_KEY=${QDRANT_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GROQ_MODEL=${GROQ_MODEL}
+      - ENABLE_WS_TERMINAL=${ENABLE_WS_TERMINAL}
+      - WARMUP_AI_ON_STARTUP=${WARMUP_AI_ON_STARTUP}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - pytutor-network
+    restart: unless-stopped
+
+networks:
+  pytutor-network:
+    driver: bridge
